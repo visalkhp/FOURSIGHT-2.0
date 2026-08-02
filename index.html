@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a32">
+  <meta name="description" content="FOURSIGHT 2.0 visual scenario recognition for BBC micro:bit.">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/icon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <title>FOURSIGHT 2.0</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Visual recognition • micro:bit control</p>
+        <h1>FOURSIGHT <span>2.0</span></h1>
+        <p class="lede">Recognize one of six scenarios from the camera and send it to a connected BBC micro:bit.</p>
+      </div>
+      <button id="installBtn" class="button secondary hidden" type="button">Install app</button>
+    </header>
+
+    <section class="workspace" aria-label="Recognition workspace">
+      <div class="camera-panel panel">
+        <div class="panel-heading"><h2>Camera</h2><span id="cameraStatus" class="status" data-tone="neutral">Not started</span></div>
+        <div class="camera-stage">
+          <video id="webcam" autoplay muted playsinline aria-label="Live camera preview"></video>
+          <canvas id="overlay" aria-hidden="true"></canvas>
+          <p id="cameraEmpty" class="camera-empty">Start the camera to begin recognition.</p>
+        </div>
+        <div class="actions">
+          <button id="startBtn" class="button primary" type="button">Start camera</button>
+          <button id="stopBtn" class="button secondary" type="button" disabled>Stop camera</button>
+        </div>
+      </div>
+
+      <aside class="status-panel panel" aria-label="System status">
+        <div class="panel-heading"><h2>System status</h2></div>
+        <dl class="status-list">
+          <div><dt>Model</dt><dd id="modelStatus" class="status" data-tone="neutral">Not loaded</dd></div>
+          <div><dt>Camera</dt><dd id="cameraStatusAside" class="status" data-tone="neutral">Not started</dd></div>
+          <div><dt>micro:bit</dt><dd id="serialStatus" class="status" data-tone="neutral">Not connected</dd></div>
+        </dl>
+        <button id="serialBtn" class="button secondary wide" type="button">Connect micro:bit</button>
+        <p id="compatibility" class="note" role="status"></p>
+      </aside>
+    </section>
+
+    <section class="prediction-panel panel" aria-live="polite">
+      <div><p class="label">Stable prediction</p><strong id="prediction">Waiting for camera</strong></div>
+      <div><p class="label">Confidence</p><strong id="confidence">—</strong></div>
+      <p id="predictionHint" class="prediction-hint">A result is accepted after it remains the top prediction for 1 second.</p>
+    </section>
+
+    <section aria-labelledby="scenariosTitle">
+      <div class="section-heading"><h2 id="scenariosTitle">Scenarios</h2><p>Place the matching scenario in view.</p></div>
+      <div id="scenarioGrid" class="scenario-grid">
+        <article class="scenario-card" data-scenario="1"><span>01</span><h3>Scenario 1</h3></article>
+        <article class="scenario-card" data-scenario="2"><span>02</span><h3>Scenario 2</h3></article>
+        <article class="scenario-card" data-scenario="3"><span>03</span><h3>Scenario 3</h3></article>
+        <article class="scenario-card" data-scenario="4"><span>04</span><h3>Scenario 4</h3></article>
+        <article class="scenario-card" data-scenario="5"><span>05</span><h3>Scenario 5</h3></article>
+        <article class="scenario-card" data-scenario="6"><span>06</span><h3>Scenario 6</h3></article>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js" crossorigin="anonymous"></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

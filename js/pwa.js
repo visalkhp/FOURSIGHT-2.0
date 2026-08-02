@@ -1,0 +1,3 @@
+export async function registerServiceWorker(){if(!("serviceWorker" in navigator))return;try{await navigator.serviceWorker.register("./sw.js",{scope:"./"});}catch(error){console.warn("Service worker registration failed",error);}}
+export function initializeInstallPrompt(){let deferred=null;const button=document.getElementById("installBtn");window.addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferred=event;button.classList.remove("hidden");});button.addEventListener("click",async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;button.classList.add("hidden");});}
+export function watchInstallation(){window.addEventListener("appinstalled",()=>document.getElementById("installBtn").classList.add("hidden"));}
