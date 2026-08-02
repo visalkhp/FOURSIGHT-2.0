@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FOURSIGHT 2.0</title>
+<meta name="theme-color" content="#0d1117">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+<header class="app-header">
+<h1>FOURSIGHT 2.0</h1>
+</header>
+
+<main class="container">
+<video id="webcam" autoplay playsinline muted></video>
+
+<section class="status-panel">
+<div>Model: <span id="modelStatus">Loading...</span></div>
+<div>Camera: <span id="cameraStatus">Waiting</span></div>
+<div>Prediction: <span id="predictionStatus">None</span></div>
+<div>Confidence: <span id="confidenceValue">0%</span></div>
+<div>Serial: <span id="serialStatus">Disconnected</span></div>
+</section>
+
+<div class="controls">
+<button id="startBtn">Start Camera</button>
+<button id="serialBtn">Connect micro:bit</button>
+</div>
+
+<section class="cards">
+<div class="scenario-card" id="card1">Scenario 1</div>
+<div class="scenario-card" id="card2">Scenario 2</div>
+<div class="scenario-card" id="card3">Scenario 3</div>
+<div class="scenario-card" id="card4">Scenario 4</div>
+<div class="scenario-card" id="card5">Scenario 5</div>
+<div class="scenario-card" id="card6">Scenario 6</div>
+</section>
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

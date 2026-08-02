@@ -1,0 +1,9 @@
+{
+  "name":"FOURSIGHT 2.0",
+  "short_name":"FOURSIGHT",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#0d1117",
+  "theme_color":"#0d1117",
+  "icons":[]
+}
